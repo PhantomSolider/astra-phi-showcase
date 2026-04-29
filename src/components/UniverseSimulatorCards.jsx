@@ -14,7 +14,10 @@ function MiniSimulation({ id }) {
   if (id === "entropy") {
     return (
       <div className="mini-sim entropy-sim" aria-hidden="true">
+        <div className="entropy-lattice" />
         <div className="entropy-origin" />
+        <div className="entropy-gradient-shell shell-a" />
+        <div className="entropy-gradient-shell shell-b" />
         {Array.from({ length: 18 }).map((_, index) => {
           const angle = index * 1.72;
           const distance = 54 + index * 4;
@@ -39,7 +42,10 @@ function MiniSimulation({ id }) {
     return (
       <div className="mini-sim gravity-sim" aria-hidden="true">
         <div className="spacetime-grid" />
+        <div className="curvature-shadow" />
         <div className="well" />
+        <div className="gravity-pull-path" />
+        <div className="gravity-source" />
         <div className="falling-dot" />
       </div>
     );
@@ -49,6 +55,8 @@ function MiniSimulation({ id }) {
     return (
       <div className="mini-sim orbit-sim" aria-hidden="true">
         <div className="sun" />
+        <div className="velocity-vector" />
+        <div className="fall-vector" />
         <div className="orbit-ring" />
         <div className="orbit-ring orbit-ring-two" />
         <div className="moon-track">
@@ -61,16 +69,26 @@ function MiniSimulation({ id }) {
   if (id === "blackhole") {
     return (
       <div className="mini-sim blackhole-sim" aria-hidden="true">
-        <div className="lensing-ring lensing-ring-one" />
-        <div className="lensing-ring lensing-ring-two" />
+        <div className="photon-field" />
+        <div className="lensing-arc lensing-arc-one" />
+        <div className="lensing-arc lensing-arc-two" />
+        <div className="lensing-arc lensing-arc-three" />
         <div className="horizon" />
-        <div className="accretion" />
+        <div className="singularity-shadow" />
+        <span className="infall-beam beam-one" />
+        <span className="infall-beam beam-two" />
+        <span className="infall-beam beam-three" />
       </div>
     );
   }
 
   return (
     <div className="mini-sim galaxy-sim" aria-hidden="true">
+      <svg className="rotation-curve-plot" viewBox="0 0 260 110">
+        <path className="curve-axis" d="M28 82 H230 M28 18 V82" />
+        <path className="visible-matter-curve" d="M32 72 C76 38 118 48 222 76" />
+        <path className="observed-curve" d="M32 72 C76 40 118 36 222 38" />
+      </svg>
       <div className="galaxy-core" />
       <div className="galaxy-arm arm-one" />
       <div className="galaxy-arm arm-two" />

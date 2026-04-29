@@ -12,6 +12,7 @@ const reviewIcons = {
 function ObserveReviewVisual() {
   return (
     <div className="review-visual review-observe" aria-hidden="true">
+      <span className="observe-spectral-grid" />
       <span className="observe-lens lens-outer" />
       <span className="observe-lens lens-inner" />
       <span className="observe-crosshair cross-x" />
@@ -28,6 +29,7 @@ function ObserveReviewVisual() {
 function MeasureReviewVisual() {
   return (
     <svg className="review-visual review-measure" viewBox="0 0 520 360" aria-hidden="true">
+      <path className="measure-error-band" d="M146 252 C222 186 286 164 358 132" />
       <path className="measure-grid-line vertical one" d="M130 46 V304" />
       <path className="measure-grid-line vertical two" d="M220 46 V304" />
       <path className="measure-grid-line vertical three" d="M310 46 V304" />
@@ -47,6 +49,7 @@ function MeasureReviewVisual() {
 function ModelReviewVisual() {
   return (
     <div className="review-visual review-model" aria-hidden="true">
+      <span className="model-equation-ribbon">model is not proof</span>
       <span className="model-field field-one" />
       <span className="model-field field-two" />
       <span className="model-orbit orbit-one" />
@@ -64,6 +67,7 @@ function ModelReviewVisual() {
 function LabelReviewVisual() {
   return (
     <div className="review-visual review-label" aria-hidden="true">
+      <span className="label-confidence-grid" />
       <span className="label-signal signal-main" />
       <span className="label-noise noise-one" />
       <span className="label-noise noise-two" />

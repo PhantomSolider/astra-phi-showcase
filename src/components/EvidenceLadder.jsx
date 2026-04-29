@@ -7,7 +7,14 @@ export default function EvidenceLadder() {
       <div className="evidence-beam" aria-hidden="true" />
       <div className="ladder" aria-label="Evidence strength levels">
         {evidenceLevels.map((item, index) => (
-          <article className="glass-card ladder-step" key={item.level}>
+          <article
+            className="glass-card ladder-step"
+            key={item.level}
+            style={{
+              "--evidence-strength": `${100 - index * 17}%`,
+              "--evidence-delay": `${index * 0.22}s`,
+            }}
+          >
             <div className="ladder-number" aria-hidden="true">{index + 1}</div>
             <div>
               <h3>
@@ -16,6 +23,7 @@ export default function EvidenceLadder() {
               </h3>
               <p>{item.description}</p>
               <small>{item.example}</small>
+              <span className="confidence-trace" aria-hidden="true" />
             </div>
           </article>
         ))}

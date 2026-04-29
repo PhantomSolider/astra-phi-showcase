@@ -11,6 +11,10 @@ const shellRidgePath = `M260 180
 function GalaxyVisual() {
   return (
     <>
+      <g className="galaxy-density-waves">
+        <ellipse cx="260" cy="180" rx="164" ry="94" />
+        <ellipse cx="260" cy="180" rx="116" ry="66" />
+      </g>
       <g className="galaxy-particle-cloud">
         {Array.from({ length: 150 }).map((_, index) => {
           const angle = index * 0.42;
@@ -20,10 +24,12 @@ function GalaxyVisual() {
           return (
             <circle
               key={index}
+              className="galaxy-star-particle"
               cx={x}
               cy={y}
               r={index % 9 === 0 ? 2.8 : 1.4}
               fill="rgba(255,255,255,0.72)"
+              style={{ "--particle-delay": `${-(index % 30) * 0.14}s` }}
             />
           );
         })}
@@ -94,7 +100,20 @@ function HurricaneVisual() {
         {Array.from({ length: 28 }).map((_, index) => {
           const x = 92 + (index % 7) * 58;
           const y = 74 + Math.floor(index / 7) * 58;
-          return <line key={index} x1={x} y1={y} x2={x + 22} y2={y + 10} />;
+          return (
+            <line
+              key={index}
+              x1={x}
+              y1={y}
+              x2={x + 22}
+              y2={y + 10}
+              style={{
+                "--rain-delay": `${-(index % 14) * 0.12}s`,
+                "--rain-x": `${14 + (index % 5) * 4}px`,
+                "--rain-y": `${7 + (index % 4) * 3}px`,
+              }}
+            />
+          );
         })}
       </g>
     </g>

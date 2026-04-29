@@ -33,6 +33,15 @@ export default function KnowledgeConsole() {
   return (
     <div className="engine-grid">
       <div className="glass-card engine-panel">
+        <div className="console-orbit-map" aria-hidden="true">
+          <span className="console-ring ring-a" />
+          <span className="console-ring ring-b" />
+          <span className="console-signal signal-a" />
+          <span className="console-signal signal-b" />
+          <span className="console-node node-a" />
+          <span className="console-node node-b" />
+          <span className="console-node node-c" />
+        </div>
         <div className="panel-title">
           <Telescope size={22} aria-hidden="true" />
           <div>
@@ -96,6 +105,11 @@ export default function KnowledgeConsole() {
       </div>
 
       <article className="glass-card response-card" aria-live="polite">
+        <div className="response-spectrum" aria-hidden="true">
+          <span />
+          <span />
+          <span />
+        </div>
         <div className="response-kicker">
           <Orbit size={18} aria-hidden="true" />
           <span>{response.levelLabel} placard</span>

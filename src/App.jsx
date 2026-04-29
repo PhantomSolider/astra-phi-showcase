@@ -72,6 +72,16 @@ export default function App() {
           <span />
           <span />
         </div>
+        <div className="equation-field">
+          <span>S = k ln Ω</span>
+          <span>r = aφ^(2θ/π)</span>
+          <span>v² = GM/r</span>
+          <span>λ = c/f</span>
+        </div>
+        <div className="relativity-lens">
+          <span />
+          <span />
+        </div>
         <div className="cosmic-dust">
           <span />
           <span />
@@ -141,10 +151,6 @@ export default function App() {
               <strong>6</strong>
               <span>archive drawers</span>
             </article>
-            <article>
-              <strong>Evidence</strong>
-              <span>checked ideas</span>
-            </article>
           </div>
         </div>
 
@@ -156,6 +162,9 @@ export default function App() {
               <div className="orbit orbit-three" />
               <div className="measurement-ring measurement-ring-one" />
               <div className="measurement-ring measurement-ring-two" />
+              <div className="geodesic geodesic-one" />
+              <div className="geodesic geodesic-two" />
+              <div className="instrument-sweep" />
               <div className="planet planet-one" />
               <div className="planet planet-two" />
               <div className="planet planet-three" />

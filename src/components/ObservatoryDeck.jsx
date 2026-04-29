@@ -8,9 +8,12 @@ export default function ObservatoryDeck() {
     <div className="deck-shell">
       <article className="glass-card deck-card">
         <div className="deck-sky" aria-hidden="true">
+          <span className="deck-meridian meridian-a" />
+          <span className="deck-meridian meridian-b" />
           <span className="deck-star star-a" />
           <span className="deck-star star-b" />
           <span className="deck-star star-c" />
+          <span className="deck-comet" />
           <span className="deck-horizon" />
         </div>
         <div>
