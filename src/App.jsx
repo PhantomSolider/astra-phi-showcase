@@ -18,6 +18,7 @@ import CosmicConceptArchive from "./components/CosmicConceptArchive.jsx";
 import PatternClaimReview from "./components/PatternClaimReview.jsx";
 import ObservatoryDeck from "./components/ObservatoryDeck.jsx";
 import CosmicCursor from "./components/CosmicCursor.jsx";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 const navItems = [
   { href: "#explore", label: "Map" },
@@ -330,6 +331,7 @@ export default function App() {
           evidence-first thinking.
         </p>
       </footer>
+      <SpeedInsights />
     </main>
   );
 }
