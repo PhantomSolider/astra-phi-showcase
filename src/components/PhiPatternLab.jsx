@@ -179,15 +179,6 @@ function GoldenSpiralGraphic({ example }) {
           </radialGradient>
         </defs>
 
-        <rect x="0" y="0" width="520" height="360" rx="28" fill="rgba(255,255,255,0.03)" />
-
-        <g className="measurement-grid">
-          <ellipse cx="260" cy="180" rx="210" ry="126" />
-          <ellipse cx="260" cy="180" rx="150" ry="90" />
-          <line x1="76" y1="180" x2="444" y2="180" />
-          <line x1="260" y1="62" x2="260" y2="298" />
-        </g>
-
         <PatternVisual id={id} />
         <path
           className="phi-curve"

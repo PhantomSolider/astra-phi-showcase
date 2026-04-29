@@ -1358,29 +1358,6 @@ select option {
   height: auto;
 }
 
-.pattern-visual {
-  position: relative;
-}
-
-.pattern-visual::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(circle at 22% 18%, rgba(255,255,255,.12), transparent 18%),
-    linear-gradient(135deg, transparent, rgba(255,61,78,.06), transparent);
-  mix-blend-mode: screen;
-}
-
-.measurement-grid {
-  stroke: rgba(255,255,255,.13);
-  stroke-width: 1;
-  fill: none;
-  animation: slowTurn 42s linear infinite;
-  transform-origin: 260px 180px;
-}
-
 .galaxy-particle-cloud {
   animation: galaxyTurn 24s linear infinite;
   transform-origin: 260px 180px;
