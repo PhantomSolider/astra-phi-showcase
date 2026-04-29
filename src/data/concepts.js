@@ -7,6 +7,8 @@ export const conceptLibrary = {
     title: "Entropy and the Arrow of Time",
     simple:
       "Entropy measures how many tiny arrangements can lead to the same visible result. Systems tend to move toward states with more possible arrangements.",
+    beginner:
+      "The more ways something can happen, the more likely it becomes. Entropy explains why scattered, mixed, or spread-out states are usually easier to reach than perfectly ordered ones.",
     college:
       "In statistical mechanics, high-entropy states are far more likely because there are many more ways to make them. That probability tilt helps explain why time has a direction.",
     advanced:
@@ -26,6 +28,8 @@ export const conceptLibrary = {
     title: "Gravity as Spacetime Curvature",
     simple:
       "Gravity is not just a pulling force. In Einstein's view, matter and energy curve spacetime, and objects follow paths through that curved geometry.",
+    beginner:
+      "Mass changes the shape of the paths around it. Planets, stars, and light move as if space itself has been bent around heavy objects.",
     college:
       "General relativity treats gravity as curvature caused by stress-energy. Free-falling objects follow geodesics, the straightest available paths through curved spacetime.",
     advanced:
@@ -45,6 +49,8 @@ export const conceptLibrary = {
     title: "Spiral Galaxies and Pattern Formation",
     simple:
       "Spiral arms are bright wave-like patterns in stars, gas, and dust. They are not fixed solid arms.",
+    beginner:
+      "A spiral galaxy is more like a moving pattern than a solid pinwheel. Stars and gas travel through the arms while the bright spiral shape stays visible.",
     college:
       "Spiral arms can come from density waves, gravity between galaxies, star formation, and disk motion. They are patterns moving through galactic material.",
     advanced:
@@ -64,6 +70,8 @@ export const conceptLibrary = {
     title: "Black Holes and Event Horizons",
     simple:
       "A black hole is a region where gravity is so intense that beyond a boundary called the event horizon, light cannot escape.",
+    beginner:
+      "A black hole has a point of no return. Outside that boundary, light and matter can still move away; inside it, every path leads deeper inward.",
     college:
       "Black holes are solutions to general relativity where curved spacetime creates a causal boundary. The event horizon is not a material surface; it is a point of no return.",
     advanced:
@@ -83,6 +91,8 @@ export const conceptLibrary = {
     title: "Phi, Fibonacci, and Scientific Honesty",
     simple:
       "Phi is a mathematical ratio, about 1.618, that appears in some growth patterns and geometric relationships. It does not explain everything in nature.",
+    beginner:
+      "Phi is a beautiful number pattern, but beauty is not proof. A spiral or shape needs measurement before anyone can say it really follows Phi.",
     college:
       "Fibonacci-like patterns can emerge in phyllotaxis and optimization problems, but claims about phi must be tested with measurements, not just visual overlays.",
     advanced:
@@ -102,6 +112,8 @@ export const conceptLibrary = {
     title: "Cosmic Learning Path",
     simple:
       "Astra-Phi organizes big astronomy and physics ideas into simple explanations, deeper science, visual analogies, and misconception checks.",
+    beginner:
+      "Start with the main idea, then compare it with evidence. The goal is to leave with a clearer way to judge cosmic patterns.",
     college:
       "Strong science learning connects curiosity to models, evidence, limits, and math. The goal is not to memorize facts; it is to learn how to think with evidence.",
     advanced:

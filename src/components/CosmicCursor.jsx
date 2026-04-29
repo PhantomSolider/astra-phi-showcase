@@ -26,8 +26,8 @@ export default function CosmicCursor() {
     document.body.classList.add("cosmic-cursor-enabled");
 
     const draw = () => {
-      trailX += (cursorX - trailX) * 0.32;
-      trailY += (cursorY - trailY) * 0.32;
+      trailX = cursorX;
+      trailY = cursorY;
       cursor?.style.setProperty("--cursor-x", `${cursorX}px`);
       cursor?.style.setProperty("--cursor-y", `${cursorY}px`);
       trail?.style.setProperty("--trail-x", `${trailX}px`);
@@ -38,11 +38,23 @@ export default function CosmicCursor() {
     const handlePointerMove = (event) => {
       cursorX = event.clientX;
       cursorY = event.clientY;
+      trailX = cursorX;
+      trailY = cursorY;
+      cursor?.style.setProperty("--cursor-x", `${cursorX}px`);
+      cursor?.style.setProperty("--cursor-y", `${cursorY}px`);
+      trail?.style.setProperty("--trail-x", `${trailX}px`);
+      trail?.style.setProperty("--trail-y", `${trailY}px`);
     };
 
     const handlePointerDown = (event) => {
       cursorX = event.clientX;
       cursorY = event.clientY;
+      trailX = cursorX;
+      trailY = cursorY;
+      cursor?.style.setProperty("--cursor-x", `${cursorX}px`);
+      cursor?.style.setProperty("--cursor-y", `${cursorY}px`);
+      trail?.style.setProperty("--trail-x", `${trailX}px`);
+      trail?.style.setProperty("--trail-y", `${trailY}px`);
       flare?.style.setProperty("--flare-x", `${cursorX}px`);
       flare?.style.setProperty("--flare-y", `${cursorY}px`);
       flare?.classList.remove("is-active");

@@ -21,6 +21,13 @@
   --aurora: #ff6f43;
   --red-giant: #ff2638;
   --danger: #ff8a77;
+  --panel-surface:
+    linear-gradient(135deg, rgba(28, 6, 10, .94), rgba(13, 4, 8, .93)),
+    rgba(8, 4, 7, .94);
+  --panel-border: rgba(255, 96, 88, .28);
+  --panel-shadow:
+    0 26px 88px rgba(0, 0, 0, .52),
+    inset 0 0 42px rgba(255, 61, 78, .055);
   --radius: 8px;
   --shadow: 0 28px 90px rgba(0, 0, 0, 0.38);
   --section-space: clamp(4.8rem, 8vw, 7.5rem);
@@ -485,6 +492,7 @@ body.cosmic-cursor-enabled .cosmic-cursor-trail {
 .museum-card,
 .glass-card {
   animation: sectionRise .75s ease both;
+  opacity: 1;
 }
 
 .eyebrow {
@@ -581,8 +589,8 @@ body.cosmic-cursor-enabled .cosmic-cursor-trail {
   overflow: hidden;
   padding: 1rem;
   border-radius: var(--radius);
-  border: 1px solid var(--line);
-  background: rgba(255,255,255,.055);
+  border: 1px solid var(--panel-border);
+  background: var(--panel-surface);
 }
 
 .hero-stats article::before,
@@ -809,12 +817,10 @@ body.cosmic-cursor-enabled .cosmic-cursor-trail {
 .glass-card {
   position: relative;
   overflow: hidden;
-  background:
-    linear-gradient(135deg, rgba(255,61,78,.075), rgba(255,255,255,.025)),
-    rgba(8, 4, 7, .76);
-  border: 1px solid var(--line);
+  background: var(--panel-surface);
+  border: 1px solid var(--panel-border);
   border-radius: var(--radius);
-  box-shadow: var(--shadow), inset 0 0 34px rgba(255,61,78,.035);
+  box-shadow: var(--panel-shadow);
   backdrop-filter: blur(20px);
 }
 
@@ -831,9 +837,8 @@ body.cosmic-cursor-enabled .cosmic-cursor-trail {
   overflow: hidden;
   padding: 1.2rem;
   border-radius: var(--radius);
-  border: 1px solid var(--line);
-  background:
-    linear-gradient(135deg, rgba(255,255,255,.075), rgba(255,255,255,.035));
+  border: 1px solid var(--panel-border);
+  background: var(--panel-surface);
   transition: transform .24s ease, border-color .24s ease, background .24s ease;
 }
 
@@ -994,8 +999,8 @@ body.cosmic-cursor-enabled .cosmic-cursor-trail {
   align-items: center;
   gap: .65rem;
   width: 100%;
-  background: rgba(255,255,255,.07);
-  border: 1px solid var(--line);
+  background: rgba(18, 6, 9, .82);
+  border: 1px solid rgba(255, 96, 88, .22);
   border-radius: var(--radius);
   padding: .9rem;
   transition: border-color .2s ease, box-shadow .2s ease;
@@ -1017,8 +1022,8 @@ body.cosmic-cursor-enabled .cosmic-cursor-trail {
 select {
   width: 100%;
   color: var(--text);
-  background: rgba(255,255,255,.07);
-  border: 1px solid var(--line);
+  background: rgba(18, 6, 9, .82);
+  border: 1px solid rgba(255, 96, 88, .22);
   border-radius: var(--radius);
   padding: .9rem;
   outline: 0;
@@ -1054,8 +1059,8 @@ select option {
 .pattern-list button,
 .sim-selector {
   color: var(--text);
-  border: 1px solid var(--line);
-  background: rgba(255,255,255,.055);
+  border: 1px solid rgba(255, 96, 88, .22);
+  background: rgba(18, 6, 9, .82);
   transition: transform .22s ease, border-color .22s ease, background .22s ease, box-shadow .22s ease;
 }
 
@@ -1185,8 +1190,9 @@ select option {
 .science-check,
 .curator-note {
   border-radius: var(--radius);
-  border: 1px solid rgba(255,255,255,.1);
-  background: rgba(255,255,255,.045);
+  border: 1px solid rgba(255, 96, 88, .22);
+  background: rgba(18, 6, 9, .82);
+  box-shadow: inset 0 0 24px rgba(255, 61, 78, .035);
 }
 
 .response-meta div {
@@ -1245,14 +1251,6 @@ select option {
 
 .warning {
   border-color: rgba(255,211,106,.24);
-}
-
-.engine-note {
-  color: var(--muted-2);
-  border: 1px dashed rgba(255,255,255,.18);
-  border-radius: var(--radius);
-  padding: .8rem .9rem;
-  font-size: .9rem;
 }
 
 .next-route {
@@ -1497,9 +1495,9 @@ select option {
 
 .metric-row div {
   border-radius: 999px;
-  border: 1px solid var(--line);
+  border: 1px solid rgba(255, 96, 88, .22);
   padding: .55rem .7rem;
-  background: rgba(255,255,255,.045);
+  background: rgba(18, 6, 9, .82);
 }
 
 .evidence-wall {
@@ -1581,9 +1579,9 @@ select option {
 
 .hall-intro {
   padding: .95rem;
-  border: 1px solid var(--line);
+  border: 1px solid rgba(255, 96, 88, .22);
   border-radius: var(--radius);
-  background: rgba(255,255,255,.045);
+  background: rgba(18, 6, 9, .82);
 }
 
 .hall-intro span {
@@ -1909,9 +1907,9 @@ select option {
 .review-steps button {
   color: var(--text);
   text-align: left;
-  border: 1px solid var(--line);
+  border: 1px solid rgba(255, 96, 88, .22);
   border-radius: var(--radius);
-  background: rgba(255,255,255,.055);
+  background: rgba(18, 6, 9, .82);
   padding: .9rem;
   transition: transform .22s ease, border-color .22s ease, background .22s ease, box-shadow .22s ease;
 }
@@ -1934,7 +1932,7 @@ select option {
 
 .archive-tabs small {
   display: block;
-  color: var(--muted);
+  color: #e4cccd;
   margin-top: .25rem;
 }
 
@@ -2064,8 +2062,9 @@ select option {
 .review-copy p,
 .deck-card p,
 .deck-takeaways p {
-  color: var(--muted);
+  color: #ead8d7;
   line-height: 1.72;
+  text-shadow: 0 0 18px rgba(0,0,0,.34);
 }
 
 .archive-takeaway {
@@ -2073,7 +2072,7 @@ select option {
   padding: 1rem;
   border-radius: var(--radius);
   border: 1px solid rgba(255,126,82,.22);
-  background: rgba(255,126,82,.065);
+  background: rgba(18, 6, 9, .82);
 }
 
 .archive-takeaway strong {
@@ -2209,6 +2208,17 @@ select option {
   gap: 1rem;
 }
 
+#deck,
+#manifesto,
+.deck-shell,
+.deck-card,
+.deck-takeaways article,
+.manifesto {
+  opacity: 1;
+  transform: none;
+  animation: none;
+}
+
 .deck-card {
   position: relative;
   min-height: 430px;
@@ -2217,6 +2227,9 @@ select option {
   grid-template-columns: minmax(0, 1fr) minmax(320px, .7fr);
   align-items: center;
   overflow: hidden;
+  background: var(--panel-surface);
+  border-color: var(--panel-border);
+  box-shadow: var(--panel-shadow);
 }
 
 .deck-card > div:last-child {
@@ -2237,6 +2250,7 @@ select option {
 .deck-sky {
   position: absolute;
   inset: 0;
+  opacity: .88;
   background:
     radial-gradient(circle at 72% 36%, rgba(255,61,78,.24), transparent 18%),
     radial-gradient(circle at 80% 66%, rgba(255,122,47,.14), transparent 22%),
@@ -2298,6 +2312,9 @@ select option {
   grid-template-columns: auto minmax(0, 1fr);
   gap: 1.3rem;
   padding: clamp(1.2rem, 3vw, 2rem);
+  background: var(--panel-surface);
+  border-color: var(--panel-border);
+  box-shadow: var(--panel-shadow);
 }
 
 .manifesto-icon {
@@ -2307,7 +2324,8 @@ select option {
   height: 4.5rem;
   border-radius: var(--radius);
   background: linear-gradient(135deg, rgba(255,61,78,.18), rgba(255,211,106,.18));
-  border: 1px solid var(--line);
+  border: 1px solid rgba(255, 130, 112, .38);
+  box-shadow: 0 0 28px rgba(255, 61, 78, .18);
 }
 
 .manifesto h2 {
@@ -2318,9 +2336,10 @@ select option {
 }
 
 .manifesto p:not(.eyebrow) {
-  color: var(--muted);
+  color: #ead8d7;
   line-height: 1.75;
   font-size: 1.03rem;
+  text-shadow: 0 0 18px rgba(0,0,0,.34);
 }
 
 .manifesto-principles {
@@ -2336,15 +2355,15 @@ select option {
   gap: .52rem;
   padding: .75rem .85rem;
   border-radius: 999px;
-  background: rgba(255,255,255,.06);
-  border: 1px solid var(--line);
+  background: rgba(18, 6, 9, .82);
+  border: 1px solid rgba(255, 96, 88, .22);
   color: var(--text);
   font-weight: 850;
 }
 
 .footer {
   padding: 4rem 0 2rem;
-  color: var(--muted-2);
+  color: #cdb7b8;
   text-align: center;
 }
 
@@ -2467,11 +2486,9 @@ select option {
 
 @keyframes sectionRise {
   from {
-    opacity: 0;
     transform: translateY(20px);
   }
   to {
-    opacity: 1;
     transform: translateY(0);
   }
 }

@@ -149,10 +149,6 @@ export default function KnowledgeConsole() {
           </div>
         </div>
 
-        <div className="engine-note">
-          <span>{response.engineNote}</span>
-        </div>
-
         <div className="next-route">
           <span>Continue the route:</span>
           <button type="button" onClick={() => setSelectedId(response.nextEntryId)}>

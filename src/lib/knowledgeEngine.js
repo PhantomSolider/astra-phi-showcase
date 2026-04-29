@@ -79,7 +79,7 @@ const entryMap = Object.fromEntries(
 );
 
 function getDepth(concept, level) {
-  if (level === "beginner") return concept.simple;
+  if (level === "beginner") return concept.beginner || concept.simple;
   if (level === "college") return concept.college;
   return concept.advanced;
 }
@@ -100,7 +100,6 @@ export function buildKnowledgeConsoleEntry(entryId, level = "college") {
     levelLens: levelInfo.lens,
     depthLabel: levelInfo.depthLabel,
     matchedTopic: concept.title,
-    engineNote: "Curated exhibit text; no external service.",
     simple: concept.simple,
     deeper: depth,
     analogy: concept.analogy,
