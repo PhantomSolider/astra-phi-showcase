@@ -1367,17 +1367,6 @@ select option {
   animation: glowBreath 6s ease-in-out infinite;
 }
 
-.phi-curve {
-  filter: drop-shadow(0 0 12px rgba(255, 211, 106, .55));
-  stroke-dasharray: 620;
-  stroke-dashoffset: 620;
-  animation: drawPhi 5s ease-in-out infinite;
-}
-
-.phi-guide {
-  animation: guideDash 8s linear infinite;
-}
-
 .galaxy-core-dot {
   animation: coreBreath 4s ease-in-out infinite;
 }
@@ -3190,25 +3179,6 @@ select option {
   }
   100% {
     stroke-dashoffset: -520;
-  }
-}
-
-@keyframes drawPhi {
-  0% {
-    stroke-dashoffset: 620;
-  }
-  45%,
-  78% {
-    stroke-dashoffset: 0;
-  }
-  100% {
-    stroke-dashoffset: -620;
-  }
-}
-
-@keyframes guideDash {
-  to {
-    stroke-dashoffset: -120;
   }
 }
 

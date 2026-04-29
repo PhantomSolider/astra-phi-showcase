@@ -2,7 +2,7 @@ import { Activity, BadgeCheck, Eye, Microscope } from "lucide-react";
 import { useMemo, useState } from "react";
 import { phiExamples } from "../data/concepts.js";
 
-const spiralPath = `M260 180
+const shellRidgePath = `M260 180
   C270 155, 310 150, 322 180
   C340 226, 274 257, 223 226
   C146 180, 189 80, 302 74
@@ -126,7 +126,7 @@ function ShellVisual() {
           );
         })}
       </g>
-      <path className="shell-ridge" d={spiralPath} fill="none" stroke="rgba(255,248,247,.62)" strokeWidth="3" strokeLinecap="round" />
+      <path className="shell-ridge" d={shellRidgePath} fill="none" stroke="rgba(255,248,247,.62)" strokeWidth="3" strokeLinecap="round" />
       <circle cx="252" cy="188" r="10" fill="rgba(255,248,247,.85)" />
     </g>
   );
@@ -139,9 +139,8 @@ function PatternVisual({ id }) {
   return <GalaxyVisual />;
 }
 
-function GoldenSpiralGraphic({ example }) {
+function PatternVisualStage({ example }) {
   const { id, score, label } = example;
-  const opacity = Math.max(0.25, score / 100);
 
   return (
     <div className={`spiral-stage pattern-visual visual-${id}`}>
@@ -153,8 +152,8 @@ function GoldenSpiralGraphic({ example }) {
       >
         <title id="spiral-title">Visual spiral comparison for {label}</title>
         <desc id="spiral-desc">
-          A symbolic visual study tailored to this exhibit, with a Phi overlay
-          used as a comparison guide rather than proof.
+          A symbolic visual study tailored to this exhibit. The animation is a
+          teaching cue, not proof of a golden-ratio structure.
         </desc>
         <defs>
           <radialGradient id="galaxyNebula" cx="50%" cy="50%" r="60%">
@@ -180,27 +179,11 @@ function GoldenSpiralGraphic({ example }) {
         </defs>
 
         <PatternVisual id={id} />
-        <path
-          className="phi-curve"
-          d={spiralPath}
-          fill="none"
-          stroke={`rgba(255, 222, 133, ${opacity})`}
-          strokeWidth="6"
-          strokeLinecap="round"
-        />
-        <path
-          className="phi-guide"
-          d={spiralPath}
-          fill="none"
-          stroke="rgba(255,255,255,0.56)"
-          strokeWidth="1.4"
-          strokeDasharray="8 10"
-        />
         <text x="28" y="44" fill="rgba(255,255,255,0.84)" fontSize="18" fontWeight="700">
           Curated visual match: {score}%
         </text>
         <text x="28" y="322" fill="rgba(255,255,255,0.62)" fontSize="14" fontWeight="700">
-          Symbolic overlay; measure before claiming Phi
+          Concept animation; measure before claiming Phi
         </text>
       </svg>
     </div>
@@ -244,7 +227,7 @@ export default function PhiPatternLab() {
       </div>
 
       <article className="glass-card phi-main" aria-live="polite">
-        <GoldenSpiralGraphic example={selected} />
+        <PatternVisualStage example={selected} />
 
         <div className="claim-card">
           <div className="claim-header">
@@ -294,7 +277,7 @@ export default function PhiPatternLab() {
           <div className="metric-row">
             <div>
               <Eye size={18} aria-hidden="true" />
-              <span>Symbolic overlay</span>
+              <span>Concept animation</span>
             </div>
             <div>
               <Activity size={18} aria-hidden="true" />
