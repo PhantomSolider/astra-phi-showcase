@@ -16,45 +16,29 @@ export default function CosmicCursor() {
     const cursor = cursorRef.current;
     const trail = trailRef.current;
     const flare = flareRef.current;
-    let frame = 0;
     let clickTimer = 0;
     let cursorX = window.innerWidth / 2;
     let cursorY = window.innerHeight / 2;
-    let trailX = cursorX;
-    let trailY = cursorY;
 
     document.body.classList.add("cosmic-cursor-enabled");
 
-    const draw = () => {
-      trailX = cursorX;
-      trailY = cursorY;
-      cursor?.style.setProperty("--cursor-x", `${cursorX}px`);
-      cursor?.style.setProperty("--cursor-y", `${cursorY}px`);
-      trail?.style.setProperty("--trail-x", `${trailX}px`);
-      trail?.style.setProperty("--trail-y", `${trailY}px`);
-      frame = window.requestAnimationFrame(draw);
+    const setCursorPosition = (x, y) => {
+      cursorX = x;
+      cursorY = y;
+      if (cursor) {
+        cursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0)`;
+      }
+      if (trail) {
+        trail.style.transform = `translate3d(${cursorX - 30}px, ${cursorY}px, 0) rotate(-18deg)`;
+      }
     };
 
     const handlePointerMove = (event) => {
-      cursorX = event.clientX;
-      cursorY = event.clientY;
-      trailX = cursorX;
-      trailY = cursorY;
-      cursor?.style.setProperty("--cursor-x", `${cursorX}px`);
-      cursor?.style.setProperty("--cursor-y", `${cursorY}px`);
-      trail?.style.setProperty("--trail-x", `${trailX}px`);
-      trail?.style.setProperty("--trail-y", `${trailY}px`);
+      setCursorPosition(event.clientX, event.clientY);
     };
 
     const handlePointerDown = (event) => {
-      cursorX = event.clientX;
-      cursorY = event.clientY;
-      trailX = cursorX;
-      trailY = cursorY;
-      cursor?.style.setProperty("--cursor-x", `${cursorX}px`);
-      cursor?.style.setProperty("--cursor-y", `${cursorY}px`);
-      trail?.style.setProperty("--trail-x", `${trailX}px`);
-      trail?.style.setProperty("--trail-y", `${trailY}px`);
+      setCursorPosition(event.clientX, event.clientY);
       flare?.style.setProperty("--flare-x", `${cursorX}px`);
       flare?.style.setProperty("--flare-y", `${cursorY}px`);
       flare?.classList.remove("is-active");
@@ -64,15 +48,14 @@ export default function CosmicCursor() {
       clickTimer = window.setTimeout(() => flare?.classList.remove("is-active"), 620);
     };
 
+    setCursorPosition(cursorX, cursorY);
     window.addEventListener("pointermove", handlePointerMove, { passive: true });
     window.addEventListener("pointerdown", handlePointerDown, { passive: true });
-    frame = window.requestAnimationFrame(draw);
 
     return () => {
       document.body.classList.remove("cosmic-cursor-enabled");
       window.removeEventListener("pointermove", handlePointerMove);
       window.removeEventListener("pointerdown", handlePointerDown);
-      window.cancelAnimationFrame(frame);
       window.clearTimeout(clickTimer);
     };
   }, []);

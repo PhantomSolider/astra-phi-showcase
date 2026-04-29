@@ -8,6 +8,7 @@ import {
   ShieldCheck,
   Telescope,
 } from "lucide-react";
+import { useEffect } from "react";
 
 import KnowledgeConsole from "./components/KnowledgeConsole.jsx";
 import PhiPatternLab from "./components/PhiPatternLab.jsx";
@@ -52,7 +53,50 @@ const exploreSteps = [
   },
 ];
 
+function usePerformanceManagement() {
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return undefined;
+    }
+
+    const body = document.body;
+    const sections = Array.from(
+      document.querySelectorAll(".hero, .value-strip, .content-section, .footer")
+    );
+
+    body.classList.add("performance-managed");
+
+    if (!("IntersectionObserver" in window)) {
+      sections.forEach((section) => section.classList.add("is-in-view"));
+
+      return () => {
+        body.classList.remove("performance-managed");
+        sections.forEach((section) => section.classList.remove("is-in-view"));
+      };
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          entry.target.classList.toggle("is-in-view", entry.isIntersecting);
+        });
+      },
+      { rootMargin: "420px 0px 420px 0px", threshold: 0 }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => {
+      observer.disconnect();
+      body.classList.remove("performance-managed");
+      sections.forEach((section) => section.classList.remove("is-in-view"));
+    };
+  }, []);
+}
+
 export default function App() {
+  usePerformanceManagement();
+
   return (
     <main className="site-shell">
       <a className="skip-link" href="#knowledge-console">
@@ -73,10 +117,10 @@ export default function App() {
           <span />
         </div>
         <div className="equation-field">
-          <span>S = k ln Ω</span>
-          <span>r = aφ^(2θ/π)</span>
-          <span>v² = GM/r</span>
-          <span>λ = c/f</span>
+          <span>S = k ln Omega</span>
+          <span>r = a phi^(2 theta/pi)</span>
+          <span>v^2 = GM/r</span>
+          <span>lambda = c/f</span>
         </div>
         <div className="relativity-lens">
           <span />

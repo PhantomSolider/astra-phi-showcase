@@ -151,7 +151,7 @@ select:focus-visible {
   clip-path: polygon(0 0, 16px 8px, 7px 11px, 3px 20px);
   background:
     linear-gradient(135deg, #fff8e8 0 12%, var(--gold) 22%, var(--orange) 54%, var(--red-giant) 100%);
-  filter: drop-shadow(0 0 8px rgba(255,61,78,.8));
+  box-shadow: 0 0 10px rgba(255,61,78,.52);
   transform: rotate(-8deg);
   transform-origin: 1px 1px;
 }
@@ -169,7 +169,6 @@ select:focus-visible {
   height: 6px;
   border-radius: 999px;
   background: linear-gradient(90deg, transparent, rgba(255,122,47,.62), rgba(255,61,78,.44));
-  filter: blur(1px);
 }
 
 .cosmic-cursor span::after {
@@ -183,13 +182,13 @@ select:focus-visible {
 }
 
 .cosmic-cursor-trail {
-  width: 42px;
-  height: 13px;
+  width: 36px;
+  height: 10px;
   border-radius: 999px;
-  transform: translate3d(var(--trail-x, -90px), var(--trail-y, -90px), 0) translate(-34px, -1px) rotate(-18deg);
+  transform: translate3d(-90px, -90px, 0) rotate(-18deg);
   background:
     linear-gradient(90deg, transparent, rgba(255,61,78,.1), rgba(255,122,47,.32), rgba(255,208,113,.14));
-  filter: blur(1.4px);
+  opacity: .86;
 }
 
 .cosmic-cursor-flare {
@@ -210,6 +209,20 @@ select:focus-visible {
 body.cosmic-cursor-enabled .cosmic-cursor,
 body.cosmic-cursor-enabled .cosmic-cursor-trail {
   opacity: 1;
+}
+
+body.performance-managed .hero:not(.is-in-view) *,
+body.performance-managed .value-strip:not(.is-in-view) *,
+body.performance-managed .content-section:not(.is-in-view) *,
+body.performance-managed .footer:not(.is-in-view) * {
+  animation-play-state: paused !important;
+}
+
+body.performance-managed .hero:not(.is-in-view),
+body.performance-managed .value-strip:not(.is-in-view),
+body.performance-managed .content-section:not(.is-in-view),
+body.performance-managed .footer:not(.is-in-view) {
+  animation-play-state: paused !important;
 }
 
 @media (hover: none), (pointer: coarse), (max-width: 760px) {
@@ -280,12 +293,11 @@ body.cosmic-cursor-enabled .cosmic-cursor-trail {
   height: 52vh;
   left: -20vw;
   opacity: .28;
-  filter: blur(20px);
   transform: rotate(-8deg);
   background:
-    linear-gradient(90deg, transparent 0 12%, rgba(255,61,78,.16), transparent 44%),
-    linear-gradient(120deg, transparent 0 22%, rgba(168,121,255,.2), transparent 62%),
-    linear-gradient(20deg, transparent 0 34%, rgba(255,122,184,.13), transparent 70%);
+    radial-gradient(ellipse at 34% 52%, rgba(255,61,78,.18), transparent 34%),
+    radial-gradient(ellipse at 58% 44%, rgba(168,121,255,.2), transparent 30%),
+    radial-gradient(ellipse at 74% 62%, rgba(255,122,184,.13), transparent 34%);
   animation: nebulaDrift 30s ease-in-out infinite alternate;
 }
 
@@ -306,11 +318,10 @@ body.cosmic-cursor-enabled .cosmic-cursor-trail {
   height: 42vh;
   left: -13vw;
   opacity: .22;
-  mix-blend-mode: screen;
-  filter: blur(28px) saturate(1.24);
   background:
-    linear-gradient(90deg, transparent 4%, rgba(255,111,67,.22), rgba(255,78,88,.18), transparent 72%),
-    linear-gradient(120deg, transparent 12%, rgba(255,79,216,.2), transparent 64%);
+    radial-gradient(ellipse at 36% 50%, rgba(255,111,67,.22), transparent 42%),
+    radial-gradient(ellipse at 58% 46%, rgba(255,78,88,.18), transparent 38%),
+    linear-gradient(120deg, transparent 12%, rgba(255,79,216,.14), transparent 64%);
   animation: auroraCurrent 26s ease-in-out infinite alternate;
 }
 
@@ -336,6 +347,7 @@ body.cosmic-cursor-enabled .cosmic-cursor-trail {
   transform: perspective(700px) rotateX(62deg) translateY(26vh);
   transform-origin: bottom center;
   animation: gridTravel 18s linear infinite;
+  will-change: transform;
 }
 
 .light-waves span {
@@ -346,7 +358,6 @@ body.cosmic-cursor-enabled .cosmic-cursor-trail {
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(255,111,67,.55), rgba(255,255,255,.82), transparent);
   opacity: 0;
-  filter: drop-shadow(0 0 18px rgba(255,111,67,.48));
   transform: rotate(var(--wave-angle, -8deg));
   animation: lightWave 18s linear infinite;
 }
@@ -372,7 +383,6 @@ body.cosmic-cursor-enabled .cosmic-cursor-trail {
   font-size: clamp(.72rem, 1vw, .95rem);
   font-weight: 800;
   letter-spacing: .06em;
-  mix-blend-mode: screen;
 }
 
 .equation-field span {
@@ -448,7 +458,6 @@ body.cosmic-cursor-enabled .cosmic-cursor-trail {
   background: linear-gradient(90deg, transparent, rgba(255,255,255,.95), rgba(255,61,78,.55), transparent);
   transform: rotate(-19deg);
   opacity: 0;
-  filter: drop-shadow(0 0 10px rgba(255,61,78,.8));
   animation: meteor 12s linear infinite;
 }
 
@@ -473,8 +482,7 @@ body.cosmic-cursor-enabled .cosmic-cursor-trail {
   justify-content: space-between;
   gap: 1.5rem;
   padding: .85rem clamp(1rem, 4vw, 3.5rem);
-  backdrop-filter: blur(24px);
-  background: linear-gradient(180deg, rgba(3, 2, 4, 0.92), rgba(6, 2, 5, 0.74));
+  background: linear-gradient(180deg, rgba(3, 2, 4, 0.98), rgba(6, 2, 5, 0.9));
   border-bottom: 1px solid var(--line);
 }
 
@@ -730,7 +738,6 @@ body.cosmic-cursor-enabled .cosmic-cursor-trail {
   aspect-ratio: 1;
   display: grid;
   place-items: center;
-  filter: drop-shadow(0 0 60px rgba(255, 61, 78, 0.18));
   z-index: 1;
 }
 
@@ -791,7 +798,6 @@ body.cosmic-cursor-enabled .cosmic-cursor-trail {
   border-top: 1px solid rgba(255,211,106,.42);
   border-left: 1px solid transparent;
   border-right: 1px solid transparent;
-  filter: drop-shadow(0 0 14px rgba(255,211,106,.22));
   animation: geodesicPrecession 18s linear infinite;
 }
 
@@ -885,8 +891,7 @@ body.cosmic-cursor-enabled .cosmic-cursor-trail {
   padding: .9rem 1rem;
   border: 1px solid rgba(255,255,255,.14);
   border-radius: var(--radius);
-  background: rgba(8, 3, 5, .72);
-  backdrop-filter: blur(16px);
+  background: rgba(8, 3, 5, .88);
   box-shadow:
     0 0 24px rgba(255, 61, 78, .16),
     inset 0 0 24px rgba(255, 122, 47, .06);
@@ -906,7 +911,6 @@ body.cosmic-cursor-enabled .cosmic-cursor-trail {
   border: 1px solid var(--panel-border);
   border-radius: var(--radius);
   box-shadow: var(--panel-shadow);
-  backdrop-filter: blur(20px);
 }
 
 .value-strip {
@@ -973,7 +977,6 @@ body.cosmic-cursor-enabled .cosmic-cursor-trail {
   height: 42rem;
   z-index: -1;
   opacity: .42;
-  filter: blur(6px);
   background:
     radial-gradient(circle at 18% 22%, var(--gallery-glow-a, rgba(255,61,78,.16)), transparent 34%),
     radial-gradient(circle at 78% 54%, var(--gallery-glow-b, rgba(255,211,106,.1)), transparent 36%);
@@ -1139,7 +1142,7 @@ body.cosmic-cursor-enabled .cosmic-cursor-trail {
 .science-check svg,
 .metric-row svg,
 .sim-selector svg {
-  filter: drop-shadow(0 0 10px rgba(255,61,78,.34));
+  color: var(--gold);
 }
 
 .panel-title h3,
@@ -1516,6 +1519,8 @@ select option {
 }
 
 .spiral-stage {
+  contain: layout paint;
+  isolation: isolate;
   overflow: hidden;
   border-radius: var(--radius);
   border: 1px solid rgba(255,255,255,.1);
@@ -1528,11 +1533,13 @@ select option {
   display: block;
   width: 100%;
   height: auto;
+  transform: translateZ(0);
 }
 
 .galaxy-particle-cloud {
   animation: galaxyTurn 24s linear infinite;
   transform-origin: 260px 180px;
+  will-change: transform;
 }
 
 .galaxy-density-waves ellipse {
@@ -1552,8 +1559,6 @@ select option {
 
 .galaxy-star-particle {
   transform-origin: 260px 180px;
-  animation: galaxyParticleStream 8.8s linear infinite;
-  animation-delay: var(--particle-delay);
 }
 
 .galaxy-glow {
@@ -1565,21 +1570,21 @@ select option {
 }
 
 .sunflower-system {
-  filter: drop-shadow(0 0 32px rgba(255, 122, 47, .18));
+  opacity: .98;
 }
 
 .seed-field {
   animation: sunflowerTurn 34s linear infinite;
   transform-origin: 260px 180px;
+  will-change: transform;
 }
 
 .seed-dot {
-  animation: seedPulse 3.8s ease-in-out infinite;
-  animation-delay: var(--seed-delay);
+  transform-box: fill-box;
 }
 
 .storm-system {
-  filter: drop-shadow(0 0 34px rgba(255, 61, 78, .16));
+  opacity: .98;
 }
 
 .storm-bands {
@@ -1588,7 +1593,7 @@ select option {
 }
 
 .storm-eye {
-  filter: drop-shadow(0 0 14px rgba(255,255,255,.32));
+  opacity: .98;
 }
 
 .rain-vectors line {
@@ -1600,7 +1605,7 @@ select option {
 }
 
 .shell-system {
-  filter: drop-shadow(0 0 34px rgba(255, 208, 113, .14));
+  opacity: .98;
 }
 
 .shell-chambers {
@@ -1609,7 +1614,6 @@ select option {
 }
 
 .shell-ridge {
-  filter: drop-shadow(0 0 12px rgba(255, 208, 113, .36));
   stroke-dasharray: 520;
   animation: shellTrace 6s ease-in-out infinite;
 }
@@ -1735,7 +1739,6 @@ select option {
   top: 50%;
   height: 2px;
   background: linear-gradient(90deg, rgba(255,61,78,.1), rgba(255,126,82,.6), rgba(255,211,106,.5), rgba(255,122,184,.1));
-  filter: drop-shadow(0 0 14px rgba(255,61,78,.35));
 }
 
 .ladder {
@@ -1868,6 +1871,8 @@ select option {
 
 .mini-sim {
   position: relative;
+  contain: layout paint;
+  isolation: isolate;
   min-height: 380px;
   overflow: hidden;
   border-radius: var(--radius);
@@ -1958,7 +1963,6 @@ select option {
   border-radius: 50%;
   background: radial-gradient(ellipse, rgba(0,0,0,.86) 0 22%, rgba(255,61,78,.22) 36%, transparent 70%);
   transform: translate(-50%, -50%) rotateX(62deg);
-  filter: blur(1px);
   animation: curvatureShadowSink 6s ease-in-out infinite;
 }
 
@@ -2025,7 +2029,6 @@ select option {
   background: linear-gradient(90deg, transparent, rgba(255,61,78,.42), rgba(255,211,106,.76));
   transform: translateY(-50%) rotate(210deg);
   transform-origin: right center;
-  filter: blur(.15px);
   opacity: .78;
 }
 
@@ -2133,7 +2136,6 @@ select option {
   border-radius: 50%;
   background:
     conic-gradient(from 90deg, transparent 0 12%, rgba(255,211,106,.18) 17%, transparent 24% 46%, rgba(255,61,78,.22) 52%, transparent 60% 100%);
-  filter: blur(.3px) drop-shadow(0 0 24px rgba(255,61,78,.22));
   animation: photonFieldShear 10s linear infinite;
 }
 
@@ -2147,7 +2149,6 @@ select option {
   border-left: 3px solid transparent;
   border-right: 3px solid transparent;
   border-bottom: 0;
-  filter: drop-shadow(0 0 14px rgba(255,211,106,.42));
   transform: translate(-50%, -50%) rotate(var(--arc-angle)) scaleY(.42);
   animation: lensingArcSweep 5.8s ease-in-out infinite;
   z-index: 3;
@@ -2190,7 +2191,6 @@ select option {
   border-radius: 999px;
   background: linear-gradient(90deg, transparent, rgba(255,211,106,.84), rgba(255,61,78,.16));
   transform-origin: right center;
-  filter: drop-shadow(0 0 12px rgba(255,211,106,.42));
   animation: horizonInfall 4.8s ease-in infinite;
   z-index: 2;
 }
@@ -2217,7 +2217,6 @@ select option {
   height: auto;
   opacity: .78;
   z-index: 5;
-  filter: drop-shadow(0 0 14px rgba(255,61,78,.22));
 }
 
 .rotation-curve-plot path {
@@ -2257,7 +2256,6 @@ select option {
   background:
     radial-gradient(circle, rgba(255,255,255,.68), rgba(255,211,106,.18) 14%, transparent 28%),
     conic-gradient(from 35deg, transparent 0 9%, rgba(255,61,78,.38) 12%, transparent 23% 32%, rgba(255,122,184,.3) 38%, transparent 50% 62%, rgba(255,211,106,.25) 68%, transparent 80% 100%);
-  filter: blur(.2px) drop-shadow(0 0 26px rgba(255,61,78,.28));
   opacity: .7;
   transform: translate(-50%, -50%) rotate(-12deg);
   animation: galaxyDiskTurn 24s linear infinite;
@@ -2283,7 +2281,6 @@ select option {
   border-left: 2px solid transparent;
   border-right: 2px solid transparent;
   box-shadow: inset 0 18px 28px rgba(255,61,78,.08);
-  filter: drop-shadow(0 0 16px rgba(255,61,78,.32));
   transform: rotate(var(--arm-angle, 0deg));
   transform-origin: center;
   animation: galaxyArmTurn 14s linear infinite;
@@ -2422,6 +2419,8 @@ select option {
 
 .archive-visual {
   position: relative;
+  contain: layout paint;
+  isolation: isolate;
   min-height: 360px;
   overflow: hidden;
   border-radius: var(--radius);
@@ -2501,7 +2500,6 @@ select option {
     radial-gradient(circle at 28% 40%, rgba(255,211,106,.2), transparent 18%),
     radial-gradient(circle at 70% 58%, rgba(255,61,78,.16), transparent 22%);
   transform: translate(-50%, -50%) rotate(-12deg);
-  filter: blur(1px);
   animation: entropyStateCloudExpand 9s ease-in-out infinite;
 }
 
@@ -2601,7 +2599,6 @@ select option {
     linear-gradient(90deg, rgba(255,61,78,.18) 1px, transparent 1px);
   background-size: 24px 24px;
   transform: rotateX(64deg) scale(.98);
-  filter: drop-shadow(0 0 22px rgba(255,61,78,.18));
   animation: archiveGravityGridBend 5.8s ease-in-out infinite;
 }
 
@@ -2682,10 +2679,6 @@ select option {
   background: linear-gradient(90deg, transparent, rgba(255,61,78,.38), rgba(255,211,106,.7));
   transform: translateY(-50%) rotate(12deg);
   opacity: .72;
-}
-
-.archive-blackhole {
-  filter: drop-shadow(0 0 32px rgba(255,61,78,.18));
 }
 
 .blackhole-lens,
@@ -2812,7 +2805,6 @@ select option {
   height: 88px;
   border-top: 15px solid rgba(255,122,184,.58);
   border-radius: 100% 10% 100% 10%;
-  filter: blur(.3px) drop-shadow(0 0 20px rgba(255,61,78,.22));
   transform-origin: 4% 50%;
   transform: translate(-5%, -50%) rotate(var(--galaxy-arm-angle));
   animation: archiveGalaxyArmDrift 30s linear infinite;
@@ -2877,10 +2869,6 @@ select option {
   animation: archivePhiTrace 7.2s ease-in-out infinite;
 }
 
-.archive-phi .golden-spiral-path {
-  filter: drop-shadow(0 0 16px rgba(255,211,106,.48));
-}
-
 .archive-phi .phi-caliper {
   stroke: rgba(255,211,106,.78);
   stroke-width: 3;
@@ -2891,7 +2879,6 @@ select option {
   fill: #fff8f7;
   stroke: var(--red-giant);
   stroke-width: 3;
-  filter: drop-shadow(0 0 8px rgba(255,61,78,.75));
 }
 
 .archive-light {
@@ -2911,7 +2898,6 @@ select option {
   stroke-width: 7;
   stroke-dasharray: 34 18;
   animation: archiveLightFlow 3.8s linear infinite;
-  filter: drop-shadow(0 0 12px rgba(255,61,78,.44));
 }
 
 .archive-light .echo {
@@ -2943,7 +2929,6 @@ select option {
 
 .archive-light .light-source {
   fill: #fff8f7;
-  filter: drop-shadow(0 0 22px rgba(255,255,255,.7)) drop-shadow(0 0 42px rgba(255,61,78,.34));
 }
 
 .archive-light .light-pulse {
@@ -3004,6 +2989,8 @@ select option {
 
 .review-stage {
   position: relative;
+  contain: layout paint;
+  isolation: isolate;
   min-height: 420px;
   padding: clamp(1.2rem, 3vw, 2rem);
   display: grid;
@@ -3141,7 +3128,6 @@ select option {
   stroke: var(--gold);
   stroke-width: 5;
   stroke-dasharray: 300;
-  filter: drop-shadow(0 0 12px rgba(255,211,106,.38));
   animation: reviewMeasureArc 5.4s ease-in-out infinite;
 }
 
@@ -3160,7 +3146,6 @@ select option {
   fill: #fff8f7;
   stroke: var(--red-giant);
   stroke-width: 3;
-  filter: drop-shadow(0 0 8px rgba(255,61,78,.7));
 }
 
 .review-model .model-field,
@@ -3515,7 +3500,6 @@ select option {
   border-radius: 999px;
   background: linear-gradient(90deg, transparent, rgba(255,211,106,.82), rgba(255,61,78,.16));
   transform: rotate(-18deg);
-  filter: drop-shadow(0 0 14px rgba(255,211,106,.38));
   animation: deckCometPass 11s ease-in-out infinite;
 }
 
@@ -3717,7 +3701,7 @@ select option {
 
 @keyframes gridTravel {
   to {
-    background-position: 0 92px, 92px 0;
+    transform: perspective(700px) rotateX(62deg) translateY(calc(26vh + 92px));
   }
 }
 
@@ -3783,15 +3767,12 @@ select option {
 @keyframes planetBeacon {
   0% {
     opacity: .42;
-    filter: brightness(.9);
   }
   28% {
     opacity: 1;
-    filter: brightness(1.24) drop-shadow(0 0 8px currentColor);
   }
   100% {
     opacity: .42;
-    filter: brightness(.9);
   }
 }
 
@@ -3799,18 +3780,15 @@ select option {
   0%,
   100% {
     opacity: .84;
-    filter: brightness(.95);
   }
   44% {
     opacity: 1;
-    filter: brightness(1.18) drop-shadow(0 0 14px rgba(255,211,106,.58));
   }
 }
 
 @keyframes coreBreath {
   50% {
     transform: scale(1.04);
-    filter: saturate(1.18);
   }
 }
 
@@ -3833,33 +3811,13 @@ select option {
   }
 }
 
-@keyframes galaxyParticleStream {
-  0% {
-    opacity: 0;
-    transform: rotate(0deg) translate3d(0, 0, 0) scale(.84);
-  }
-  12% {
-    opacity: .82;
-  }
-  82% {
-    opacity: .48;
-    transform: rotate(18deg) translate3d(5px, -2px, 0) scale(1.04);
-  }
-  100% {
-    opacity: 0;
-    transform: rotate(26deg) translate3d(7px, -3px, 0) scale(.86);
-  }
-}
-
 @keyframes galaxyCoreFlare {
   0%,
   100% {
     opacity: .7;
-    filter: drop-shadow(0 0 8px rgba(255,255,255,.24));
   }
   50% {
     opacity: 1;
-    filter: drop-shadow(0 0 18px rgba(255,211,106,.55));
   }
 }
 
@@ -3899,12 +3857,6 @@ select option {
   }
 }
 
-@keyframes seedPulse {
-  50% {
-    opacity: .62;
-  }
-}
-
 @keyframes stormTurn {
   to {
     transform: rotate(360deg);
@@ -3913,7 +3865,6 @@ select option {
 
 @keyframes stormEye {
   50% {
-    filter: drop-shadow(0 0 14px rgba(255,255,255,.42));
     transform: scale(1.08);
   }
 }
@@ -3939,7 +3890,6 @@ select option {
 @keyframes shellBreath {
   50% {
     transform: scale(1.018);
-    filter: brightness(1.12);
   }
 }
 
@@ -3984,7 +3934,6 @@ select option {
 @keyframes gravityGridSink {
   50% {
     transform: perspective(680px) rotateX(67deg) translateY(31px) scale(.94);
-    filter: brightness(1.18);
   }
 }
 
@@ -3997,8 +3946,8 @@ select option {
 
 @keyframes gravityMassGlow {
   50% {
-    box-shadow: 0 0 64px rgba(255,61,78,.64);
-    filter: brightness(1.12);
+    transform: translate(-50%, -50%) scale(1.04);
+    opacity: .96;
   }
 }
 
@@ -4092,11 +4041,9 @@ select option {
   0%,
   100% {
     opacity: .28;
-    filter: brightness(.9);
   }
   50% {
     opacity: .86;
-    filter: brightness(1.4);
   }
 }
 
@@ -4115,11 +4062,9 @@ select option {
   0%,
   100% {
     opacity: .72;
-    filter: brightness(.94);
   }
   42% {
     opacity: 1;
-    filter: brightness(1.2) drop-shadow(0 0 16px rgba(255,61,78,.38));
   }
 }
 
@@ -4144,7 +4089,6 @@ select option {
 @keyframes archiveGravityGridBend {
   50% {
     transform: rotateX(68deg) scale(.9);
-    filter: drop-shadow(0 0 30px rgba(255,61,78,.28));
   }
 }
 
@@ -4156,8 +4100,9 @@ select option {
 }
 
 @keyframes archiveGravityMassField {
-  to {
-    filter: hue-rotate(18deg) brightness(1.12);
+  50% {
+    transform: translate(-50%, -50%) scale(1.035);
+    opacity: .92;
   }
 }
 
@@ -4195,18 +4140,15 @@ select option {
   0%,
   100% {
     opacity: .78;
-    filter: brightness(.95);
   }
   46% {
     opacity: 1;
-    filter: brightness(1.18) drop-shadow(0 0 12px rgba(255,211,106,.48));
   }
 }
 
 @keyframes archiveLensPulse {
   50% {
     opacity: .42;
-    filter: brightness(1.35);
   }
 }
 
@@ -4298,7 +4240,6 @@ select option {
 @keyframes archiveCaliperGlow {
   50% {
     opacity: .58;
-    filter: drop-shadow(0 0 10px rgba(255,211,106,.55));
   }
 }
 
@@ -4311,7 +4252,6 @@ select option {
 @keyframes archiveSpectrumPulse {
   50% {
     opacity: .42;
-    filter: drop-shadow(0 0 12px currentColor);
   }
 }
 
@@ -4329,7 +4269,6 @@ select option {
 @keyframes reviewLensSearch {
   50% {
     transform: translate(-50%, -50%) scale(1.05);
-    filter: brightness(1.22);
   }
 }
 
@@ -4379,27 +4318,25 @@ select option {
 @keyframes reviewMeasureGlow {
   50% {
     opacity: .58;
-    filter: drop-shadow(0 0 10px rgba(255,61,78,.58));
   }
 }
 
 @keyframes reviewModelField {
   50% {
     transform: translate(-50%, -50%) rotateX(67deg) scale(.94);
-    filter: brightness(1.24);
   }
 }
 
 @keyframes reviewModelOrbit {
   50% {
     opacity: .52;
-    filter: brightness(1.28);
   }
 }
 
 @keyframes reviewModelCoreTurn {
-  to {
-    filter: hue-rotate(28deg) brightness(1.12);
+  50% {
+    transform: translate(-50%, -50%) scale(1.04);
+    opacity: .92;
   }
 }
 
@@ -4477,15 +4414,12 @@ select option {
 @keyframes deckStarSignal {
   0% {
     opacity: .38;
-    filter: brightness(.9);
   }
   36% {
     opacity: 1;
-    filter: brightness(1.26) drop-shadow(0 0 12px currentColor);
   }
   100% {
     opacity: .38;
-    filter: brightness(.9);
   }
 }
 
@@ -4582,13 +4516,13 @@ select option {
 
 @keyframes confidenceTraceScan {
   0% {
-    filter: brightness(.86);
+    opacity: .78;
   }
   50% {
-    filter: brightness(1.25) drop-shadow(0 0 12px rgba(255,61,78,.32));
+    opacity: 1;
   }
   100% {
-    filter: brightness(.86);
+    opacity: .78;
   }
 }
 
@@ -4667,7 +4601,6 @@ select option {
 @keyframes prismRefract {
   50% {
     opacity: .72;
-    filter: drop-shadow(0 0 12px rgba(255,211,106,.32));
   }
 }
 
@@ -4726,16 +4659,6 @@ select option {
   100% {
     opacity: 0;
     transform: translate3d(44vw, -18vh, 0) rotate(-18deg);
-  }
-}
-
-@supports (animation-timeline: view()) {
-  .content-section,
-  .value-strip article,
-  .museum-card,
-  .glass-card {
-    animation-timeline: view();
-    animation-range: entry 0% cover 28%;
   }
 }
 

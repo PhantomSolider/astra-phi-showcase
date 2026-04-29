@@ -16,9 +16,9 @@ function GalaxyVisual() {
         <ellipse cx="260" cy="180" rx="116" ry="66" />
       </g>
       <g className="galaxy-particle-cloud">
-        {Array.from({ length: 150 }).map((_, index) => {
+        {Array.from({ length: 108 }).map((_, index) => {
           const angle = index * 0.42;
-          const radius = 4 + index * 1.46;
+          const radius = 4 + index * 1.9;
           const x = 260 + Math.cos(angle) * radius;
           const y = 180 + Math.sin(angle) * radius * 0.64;
           return (
@@ -29,7 +29,7 @@ function GalaxyVisual() {
               cy={y}
               r={index % 9 === 0 ? 2.8 : 1.4}
               fill="rgba(255,255,255,0.72)"
-              style={{ "--particle-delay": `${-(index % 30) * 0.14}s` }}
+              opacity={index % 9 === 0 ? "0.86" : "0.58"}
             />
           );
         })}
@@ -45,7 +45,7 @@ function SunflowerVisual() {
     <g className="sunflower-system">
       <circle cx="260" cy="180" r="128" fill="url(#sunflowerDisk)" opacity="0.96" />
       <g className="seed-field">
-        {Array.from({ length: 190 }).map((_, index) => {
+        {Array.from({ length: 156 }).map((_, index) => {
           const angle = index * 2.3999632297;
           const radius = 4.6 * Math.sqrt(index);
           const x = 260 + Math.cos(angle) * radius;
@@ -61,7 +61,7 @@ function SunflowerVisual() {
               ry={seedSize * 1.45}
               fill={index % 3 === 0 ? "rgba(255,208,113,0.88)" : "rgba(255,122,47,0.74)"}
               transform={`rotate(${(angle * 180) / Math.PI} ${x} ${y})`}
-              style={{ "--seed-delay": `${-(index % 18) * 0.08}s` }}
+              opacity={index % 5 === 0 ? "0.92" : "0.76"}
             />
           );
         })}
