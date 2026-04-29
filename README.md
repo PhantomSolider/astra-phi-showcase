@@ -1,20 +1,23 @@
-# Astra-Phi: Where Cosmic Wonder Meets Scientific Evidence
+# Astra-Phi: Interstellar Museum of Cosmic Evidence
 
-Astra-Phi is a local AI-style cosmic pattern explorer built for an AI Showcase submission. It helps students learn astronomy, physics, and mathematical structure through interactive explanations, Phi pattern analysis, and scientific honesty.
+Astra-Phi is an interactive interstellar museum for astronomy, physics, pattern analysis, and evidence. It helps students explore cosmic ideas through curated knowledge paths, Phi pattern exhibits, evidence labels, and symbolic demonstrations.
 
 ## What the project does
 
 Astra-Phi gives users:
 
-- A local AI-style Cosmic Question Engine for astronomy and physics questions.
-- A Phi Pattern Lab that compares mathematical beauty with scientific evidence.
-- Universe Simulator Cards for entropy, gravity, orbital motion, black holes, and galaxy rotation.
-- A Creator Manifesto section explaining the purpose and personal mission behind the build.
-- A polished single-page interface that is easy to demo in under 3 minutes.
+- A Knowledge Console with finished astronomy and physics exhibit paths.
+- Learning depths that change the explanation from beginner language to astrophysics preparation.
+- A Phi Pattern Gallery that compares visual beauty with scientific evidence.
+- An Evidence Wall that labels claims as measured, modeled, approximate, aesthetic, or speculative.
+- A Demonstration Hall for entropy, gravity, orbital motion, black holes, and galaxy rotation.
+- A Cosmic Concepts Archive with compact drawers for entropy, gravity, black holes, galaxy structure, Phi, and light.
+- A Pattern Claim Review station that turns beautiful observations into careful evidence labels.
+- An Observatory Deck and curator closing note that explain the purpose behind the project.
 
-## Why this project stands out
+## Why it matters
 
-Many students love space but feel blocked by abstract math. Astra-Phi turns that curiosity into a visual, guided learning experience. It also avoids the common mistake of overclaiming that the golden ratio explains everything. Instead, it separates wonder from evidence.
+Many students are curious about space but get slowed down by abstract math, unclear explanations, or exaggerated claims about cosmic patterns. Astra-Phi keeps the wonder while showing what the evidence can actually support.
 
 ## Tech stack
 
@@ -22,13 +25,13 @@ Many students love space but feel blocked by abstract math. Astra-Phi turns that
 - React
 - CSS
 - lucide-react icons
-- Local AI-style response engine
+- Curated response logic
 
-This version does not require an API key, so it can be submitted, demoed, and deployed safely. The local response engine is written in `src/lib/aiEngine.js`; it is intentionally transparent and should not be described as calling a live AI API.
+The site runs as a static React experience and does not depend on external services. The response logic is transparent and curated so the project stays honest about what it is doing.
 
 ## How to run it
 
-1. Install Node.js from https://nodejs.org if you do not already have it.
+1. Install Node.js from https://nodejs.org if needed.
 2. Open a terminal inside this project folder.
 3. Run:
 
@@ -49,27 +52,24 @@ http://localhost:5173
 npm run build
 ```
 
-The production build will be created in the `dist/` folder.
+The production build is created in the `dist/` folder.
 
 ## Suggested submission description
 
-Astra-Phi is a local AI-style cosmic pattern explorer that helps students learn astronomy, physics, and mathematical structure through interactive visualizations. The project combines guided explanations, golden-ratio pattern analysis, and physics simulation cards to make complex concepts like entropy, gravity, orbital motion, black holes, and galaxy structure easier to understand.
+Astra-Phi is a living interstellar museum of cosmic knowledge. It helps students explore astronomy, physics, and mathematical patterns through curated exhibit paths, visual concept exhibits, an archive of core ideas, Phi pattern analysis, and evidence-first claim labels.
 
-The problem it addresses: many students are interested in space but get blocked by abstract math, unclear explanations, or overhyped claims about cosmic patterns. Astra-Phi makes these ideas visual, interactive, and scientifically honest.
-
-How it works: users ask astronomy or physics questions, choose their learning level, and receive layered explanations with visual analogies and misconception checks. The Phi Pattern Lab lets users compare ideal mathematical spirals with real-world structures while clearly labeling whether a pattern is scientifically supported, approximate, aesthetic, or speculative.
-
-Impact: Astra-Phi turns curiosity about the universe into an accessible learning experience for students, especially beginners who want to approach astrophysics but feel intimidated by the math.
+The project is careful about scientific honesty. It uses Phi and spiral patterns as a way to practice better evidence habits, not as proof that the golden ratio controls the universe.
 
 ## Suggested 3-minute demo flow
 
-1. Open the hero and state the problem.
-2. Ask the Cosmic Question Engine: "Why do spiral galaxies have arms?"
-3. Switch the learning level to "Preparing for Astrophysics."
-4. Open the Phi Pattern Lab and show the difference between beauty and evidence.
-5. Show the Universe Simulator Cards.
-6. End on the Creator Manifesto and mission.
+1. Open the hero and frame the site as a museum of cosmic evidence.
+2. Enter the Knowledge Console and select the Spiral Galaxies path.
+3. Switch the learning depth and show how the placard becomes more advanced.
+4. Open the Phi Pattern Gallery and compare symbolic visual match with evidence strength.
+5. Move through the Evidence Wall and one or two Demonstration Hall exhibits.
+6. Open the Cosmic Concepts Archive or Pattern Claim Review to show that every exhibit has a next step.
+7. End on the Observatory Deck and curator note: wonder is not weakened by evidence; it is sharpened by it.
 
-## Creator principle
+## Curator principle
 
-Wonder is strongest when it stays connected to evidence.
+Wonder opens the gallery. Evidence earns the label.

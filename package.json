@@ -2,7 +2,7 @@
   "name": "astra-phi-showcase",
   "version": "1.0.0",
   "private": true,
-  "description": "Astra-Phi: an AI-powered cosmic pattern explorer for astronomy, physics, and scientific honesty.",
+  "description": "Astra-Phi: an interactive interstellar museum for astronomy, physics, pattern analysis, and evidence.",
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0",

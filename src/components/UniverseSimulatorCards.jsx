@@ -1,19 +1,20 @@
 import { useState } from "react";
-import { ArrowRight, Atom, CircleDot, Orbit, RadioTower, Waves } from "lucide-react";
+import { ArrowRight, CircleDot, Orbit, Waves } from "lucide-react";
 import { simulatorCards } from "../data/concepts.js";
 
 const icons = {
   entropy: Waves,
   gravity: CircleDot,
   orbit: Orbit,
-  blackhole: RadioTower,
-  galaxy: Atom,
+  blackhole: CircleDot,
+  galaxy: Orbit,
 };
 
 function MiniSimulation({ id }) {
   if (id === "entropy") {
     return (
       <div className="mini-sim entropy-sim" aria-hidden="true">
+        <div className="entropy-origin" />
         {Array.from({ length: 18 }).map((_, index) => {
           const angle = index * 1.72;
           const distance = 54 + index * 4;
@@ -37,6 +38,7 @@ function MiniSimulation({ id }) {
   if (id === "gravity") {
     return (
       <div className="mini-sim gravity-sim" aria-hidden="true">
+        <div className="spacetime-grid" />
         <div className="well" />
         <div className="falling-dot" />
       </div>
@@ -48,7 +50,10 @@ function MiniSimulation({ id }) {
       <div className="mini-sim orbit-sim" aria-hidden="true">
         <div className="sun" />
         <div className="orbit-ring" />
-        <div className="moon" />
+        <div className="orbit-ring orbit-ring-two" />
+        <div className="moon-track">
+          <div className="moon" />
+        </div>
       </div>
     );
   }
@@ -56,6 +61,8 @@ function MiniSimulation({ id }) {
   if (id === "blackhole") {
     return (
       <div className="mini-sim blackhole-sim" aria-hidden="true">
+        <div className="lensing-ring lensing-ring-one" />
+        <div className="lensing-ring lensing-ring-two" />
         <div className="horizon" />
         <div className="accretion" />
       </div>
@@ -64,10 +71,20 @@ function MiniSimulation({ id }) {
 
   return (
     <div className="mini-sim galaxy-sim" aria-hidden="true">
-      <div className="bar one" />
-      <div className="bar two" />
-      <div className="bar three" />
-      <div className="curve" />
+      <div className="galaxy-core" />
+      <div className="galaxy-arm arm-one" />
+      <div className="galaxy-arm arm-two" />
+      <div className="galaxy-arm arm-three" />
+      {Array.from({ length: 28 }).map((_, index) => (
+        <span
+          key={index}
+          style={{
+            "--star-x": `${18 + ((index * 19) % 64)}%`,
+            "--star-y": `${18 + ((index * 31) % 58)}%`,
+            "--star-delay": `${index * -0.21}s`,
+          }}
+        />
+      ))}
     </div>
   );
 }
@@ -78,9 +95,13 @@ export default function UniverseSimulatorCards() {
 
   return (
     <div className="simulator-layout">
-      <div className="sim-card-grid">
+      <div className="sim-card-grid" aria-label="Demonstration hall exhibits">
+        <div className="hall-intro">
+          <span>Choose an exhibit</span>
+          <p>Each animation is a symbolic teaching view, not a full simulation.</p>
+        </div>
         {simulatorCards.map((card) => {
-          const Icon = icons[card.id] || Atom;
+          const Icon = icons[card.id] || Orbit;
 
           return (
             <button
@@ -93,6 +114,7 @@ export default function UniverseSimulatorCards() {
               <Icon size={22} aria-hidden="true" />
               <span>{card.title}</span>
               <small>{card.subtitle}</small>
+              {activeId === card.id && <em>On display</em>}
             </button>
           );
         })}
@@ -101,14 +123,24 @@ export default function UniverseSimulatorCards() {
       <article className="glass-card simulator-stage" aria-live="polite">
         <MiniSimulation id={active.id} />
         <div className="sim-copy">
-          <p className="eyebrow">Interactive concept card</p>
+          <p className="eyebrow">Concept exhibit</p>
           <h3>{active.title}</h3>
           <h4>{active.subtitle}</h4>
           <p>{active.body}</p>
-          <div className="sim-metric">
+          <div className="sim-placards">
+            <div>
+              <strong>Notice</strong>
+              <p>{active.observe}</p>
+            </div>
+            <div>
+              <strong>Limit</strong>
+              <p>{active.limitation}</p>
+            </div>
+          </div>
+          <a className="sim-metric" href={active.archiveHref || "#archive"}>
             <span>{active.metric}</span>
             <ArrowRight size={18} aria-hidden="true" />
-          </div>
+          </a>
         </div>
       </article>
     </div>

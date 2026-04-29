@@ -1,39 +1,96 @@
 import {
-  Atom,
-  BrainCircuit,
+  BookOpen,
   ChevronRight,
   Compass,
+  Landmark,
+  Map,
   Orbit,
   ShieldCheck,
-  Sparkles,
-  Stars,
+  Telescope,
 } from "lucide-react";
 
-import CosmicQuestionEngine from "./components/CosmicQuestionEngine.jsx";
+import KnowledgeConsole from "./components/KnowledgeConsole.jsx";
 import PhiPatternLab from "./components/PhiPatternLab.jsx";
 import UniverseSimulatorCards from "./components/UniverseSimulatorCards.jsx";
 import CreatorManifesto from "./components/CreatorManifesto.jsx";
 import EvidenceLadder from "./components/EvidenceLadder.jsx";
+import CosmicConceptArchive from "./components/CosmicConceptArchive.jsx";
+import PatternClaimReview from "./components/PatternClaimReview.jsx";
+import ObservatoryDeck from "./components/ObservatoryDeck.jsx";
+import CosmicCursor from "./components/CosmicCursor.jsx";
 
 const navItems = [
-  { href: "#question-engine", label: "Question Engine" },
-  { href: "#phi-lab", label: "Phi Lab" },
-  { href: "#simulators", label: "Simulators" },
-  { href: "#manifesto", label: "Manifesto" },
+  { href: "#explore", label: "Map" },
+  { href: "#knowledge-console", label: "Console" },
+  { href: "#phi-lab", label: "Phi" },
+  { href: "#evidence", label: "Evidence" },
+  { href: "#simulators", label: "Hall" },
+  { href: "#archive", label: "Archive" },
+  { href: "#deck", label: "Deck" },
+];
+
+const exploreSteps = [
+  {
+    title: "Begin with a curated path",
+    text: "Use the knowledge console to open a prepared route through cosmic ideas.",
+  },
+  {
+    title: "Compare beauty with proof",
+    text: "Move through the Phi gallery and see where visual patterns need measurement.",
+  },
+  {
+    title: "Read the evidence level",
+    text: "Use the evidence wall to separate measured ideas from visual guesses.",
+  },
+  {
+    title: "Watch the concepts move",
+    text: "Open the demonstration hall for symbolic views of gravity, entropy, orbits, and galaxies.",
+  },
+  {
+    title: "Leave with a method",
+    text: "Use the archive and observatory deck to carry the evidence-first habit forward.",
+  },
 ];
 
 export default function App() {
   return (
     <main className="site-shell">
-      <a className="skip-link" href="#question-engine">
-        Skip to explorer
+      <a className="skip-link" href="#knowledge-console">
+        Skip to knowledge console
       </a>
-      <div className="star-field" aria-hidden="true" />
+      <CosmicCursor />
+      <div className="cosmic-backdrop" aria-hidden="true">
+        <div className="star-layer star-layer-far" />
+        <div className="star-layer star-layer-near" />
+        <div className="nebula-ribbon nebula-ribbon-one" />
+        <div className="nebula-ribbon nebula-ribbon-two" />
+        <div className="aurora-veil aurora-veil-one" />
+        <div className="aurora-veil aurora-veil-two" />
+        <div className="cosmic-grid" />
+        <div className="light-waves">
+          <span />
+          <span />
+          <span />
+        </div>
+        <div className="cosmic-dust">
+          <span />
+          <span />
+          <span />
+          <span />
+          <span />
+          <span />
+        </div>
+        <div className="shooting-stars">
+          <span />
+          <span />
+          <span />
+        </div>
+      </div>
 
       <header className="topbar">
         <a className="brand" href="#top" aria-label="Astra-Phi home">
           <span className="brand-mark" aria-hidden="true">
-            <Atom size={22} />
+            <Orbit size={22} />
           </span>
           <span>Astra-Phi</span>
         </a>
@@ -50,65 +107,66 @@ export default function App() {
       <section id="top" className="hero section-grid">
         <div className="hero-copy">
           <p className="eyebrow">
-            <Sparkles size={16} aria-hidden="true" />
-            Local AI-style cosmic pattern explorer
+            <Telescope size={16} aria-hidden="true" />
+            Interstellar knowledge museum
           </p>
 
           <h1>
-            Where cosmic wonder meets
-            <span> scientific evidence.</span>
+            Step inside a living museum
+            <span> of cosmic evidence.</span>
           </h1>
 
           <p className="hero-lede">
-            Astra-Phi helps students explore astronomy, physics, entropy,
-            gravity, spiral structure, and mathematical beauty while keeping
-            every claim tied to evidence.
+            Astra-Phi is an interactive observatory for astronomy, physics,
+            pattern analysis, and evidence. Wander through curated exhibits,
+            Phi exhibits, evidence markers, and symbolic demonstrations that
+            make space science feel close without overstating what we know.
           </p>
 
           <div className="hero-actions">
-            <a className="primary-button" href="#question-engine">
-              Launch the explorer <ChevronRight size={18} aria-hidden="true" />
+            <a className="primary-button" href="#knowledge-console">
+              Enter the museum <ChevronRight size={18} aria-hidden="true" />
             </a>
             <a className="ghost-button" href="#manifesto">
-              Read the mission
+              Read the curator note
             </a>
           </div>
 
           <div className="hero-stats" aria-label="Project highlights">
             <article>
-              <strong>4</strong>
-              <span>learning layers</span>
+              <strong>7</strong>
+              <span>museum galleries</span>
             </article>
             <article>
-              <strong>5</strong>
-              <span>physics concepts</span>
+              <strong>6</strong>
+              <span>archive drawers</span>
             </article>
             <article>
-              <strong>Local</strong>
-              <span>no API key needed</span>
+              <strong>Evidence</strong>
+              <span>checked ideas</span>
             </article>
           </div>
         </div>
 
         <div className="hero-visual">
-          <div className="orbit-system" aria-hidden="true">
-            <div className="orbit orbit-one" />
-            <div className="orbit orbit-two" />
-            <div className="orbit orbit-three" />
-            <div className="planet planet-one" />
-            <div className="planet planet-two" />
-            <div className="planet planet-three" />
-            <div className="core">
-              <Stars size={42} />
-              <span>Phi</span>
+          <div className="observatory-window">
+            <div className="orbit-system" aria-hidden="true">
+              <div className="orbit orbit-one" />
+              <div className="orbit orbit-two" />
+              <div className="orbit orbit-three" />
+              <div className="measurement-ring measurement-ring-one" />
+              <div className="measurement-ring measurement-ring-two" />
+              <div className="planet planet-one" />
+              <div className="planet planet-two" />
+              <div className="planet planet-three" />
+              <div className="core">
+                <Orbit size={42} />
+                <span>Phi</span>
+              </div>
             </div>
-          </div>
-          <div className="glass-card hero-note">
-            <BrainCircuit size={20} aria-hidden="true" />
-            <p>
-              Ask a question, choose your level, and get an explanation,
-              analogy, and misconception check from a local response engine.
-            </p>
+            <div className="window-caption">
+              <strong>Patterns become knowledge when measured.</strong>
+            </div>
           </div>
         </div>
       </section>
@@ -116,67 +174,141 @@ export default function App() {
       <section className="value-strip" aria-label="Astra-Phi strengths">
         <article>
           <Compass size={22} aria-hidden="true" />
-          <h2>Guided curiosity</h2>
-          <p>Turns space questions into clear learning paths.</p>
+          <h2>Curated paths</h2>
+          <p>Start with a prepared exhibit and follow a clear route through it.</p>
         </article>
         <article>
           <Orbit size={22} aria-hidden="true" />
-          <h2>Visual physics</h2>
-          <p>Gives abstract ideas shape, motion, and context.</p>
+          <h2>Living exhibits</h2>
+          <p>Symbolic motion gives abstract physics shape, rhythm, and context.</p>
         </article>
         <article>
           <ShieldCheck size={22} aria-hidden="true" />
-          <h2>Evidence discipline</h2>
-          <p>Separates beautiful patterns from supported claims.</p>
+          <h2>Evidence checks</h2>
+          <p>Every beautiful claim has to pass through scientific caution.</p>
         </article>
       </section>
 
-      <section id="question-engine" className="content-section">
+      <section id="explore" className="content-section explore-section">
         <div className="section-heading">
-          <p className="eyebrow">Module 01</p>
-          <h2>Cosmic Question Engine</h2>
+          <p className="eyebrow">
+            <Map size={16} aria-hidden="true" />
+            Visitor path
+          </p>
+          <h2>How to explore Astra-Phi</h2>
           <p>
-            A local AI-style tutor that maps astronomy and physics questions
-            into layered explanations, analogies, and misconception checks.
+            Move through the page like a compact science museum: select,
+            compare, check the evidence, then watch a concept come alive.
           </p>
         </div>
-        <CosmicQuestionEngine />
+        <div className="explore-grid" aria-label="How to explore Astra-Phi">
+          {exploreSteps.map((step, index) => (
+            <article className="museum-card" key={step.title}>
+              <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+              <h3>{step.title}</h3>
+              <p>{step.text}</p>
+            </article>
+          ))}
+        </div>
       </section>
 
-      <section id="phi-lab" className="content-section">
+      <section id="knowledge-console" className="content-section gallery-section">
         <div className="section-heading">
-          <p className="eyebrow">Module 02</p>
-          <h2>Phi Pattern Lab</h2>
+          <p className="eyebrow">
+            <Telescope size={16} aria-hidden="true" />
+            Gallery 01
+          </p>
+          <h2>Knowledge Console</h2>
           <p>
-            Explore the beauty of Phi while separating real scientific evidence
-            from coincidence, approximation, and aesthetics.
+            A curated console for astronomy and physics exhibits. Choose a
+            prepared path, set a learning depth, and compare intuition with
+            evidence.
+          </p>
+        </div>
+        <KnowledgeConsole />
+      </section>
+
+      <section id="phi-lab" className="content-section gallery-section">
+        <div className="section-heading">
+          <p className="eyebrow">
+            <Landmark size={16} aria-hidden="true" />
+            Gallery 02
+          </p>
+          <h2>Phi Pattern Gallery</h2>
+          <p>
+            A beauty-versus-evidence exhibit for spirals, natural growth, and
+            the golden ratio. The point is not to dismiss beauty; it is to test
+            what the evidence can support.
           </p>
         </div>
         <PhiPatternLab />
       </section>
 
-      <section className="content-section">
+      <section id="evidence" className="content-section gallery-section">
         <div className="section-heading">
-          <p className="eyebrow">Module 03</p>
-          <h2>Evidence Ladder</h2>
+          <p className="eyebrow">
+            <ShieldCheck size={16} aria-hidden="true" />
+            Gallery 03
+          </p>
+          <h2>Evidence Wall</h2>
           <p>
-            Astra-Phi labels claims by evidence strength so wonder stays
-            powerful instead of becoming misinformation.
+            A clear display of scientific confidence levels, from measured
+            results to speculative ideas. It keeps cosmic wonder from turning
+            into overclaiming.
           </p>
         </div>
         <EvidenceLadder />
       </section>
 
-      <section id="simulators" className="content-section">
+      <section id="simulators" className="content-section gallery-section">
         <div className="section-heading">
-          <p className="eyebrow">Module 04</p>
-          <h2>Universe Simulator Cards</h2>
+          <p className="eyebrow">
+            <BookOpen size={16} aria-hidden="true" />
+            Gallery 04
+          </p>
+          <h2>Demonstration Hall</h2>
           <p>
-            Compact visual demos for the concepts students usually hear about
-            before they truly understand them.
+            Interactive concept exhibits for entropy, gravity, orbital motion,
+            black holes, and galaxy rotation. Each one is symbolic, focused,
+            and honest about its limits.
           </p>
         </div>
         <UniverseSimulatorCards />
+      </section>
+
+      <section id="archive" className="content-section gallery-section">
+        <div className="section-heading">
+          <p className="eyebrow">
+            <BookOpen size={16} aria-hidden="true" />
+            Gallery 05
+          </p>
+          <h2>Cosmic Concepts Archive</h2>
+          <p>
+            A drawer-style archive for the ideas Astra-Phi uses most: entropy,
+            gravity, black holes, galaxy structure, Phi, and light. Each entry
+            gives a complete takeaway and a path back into the museum.
+          </p>
+        </div>
+        <CosmicConceptArchive />
+      </section>
+
+      <section id="pattern-review" className="content-section gallery-section">
+        <div className="section-heading">
+          <p className="eyebrow">
+            <Compass size={16} aria-hidden="true" />
+            Gallery 06
+          </p>
+          <h2>Pattern Claim Review</h2>
+          <p>
+            A four-step station for judging cosmic pattern claims. It shows how
+            a beautiful observation becomes a careful scientific label.
+          </p>
+        </div>
+        <PatternClaimReview />
+      </section>
+
+      <section id="deck" className="content-section gallery-section">
+        <ObservatoryDeck />
       </section>
 
       <section id="manifesto" className="content-section">
@@ -185,8 +317,8 @@ export default function App() {
 
       <footer className="footer">
         <p>
-          Built for the AI Showcase. Astra-Phi principle: wonder is strongest
-          when it stays connected to evidence.
+          Astra-Phi is a museum of cosmic knowledge, visual patterns, and
+          evidence-first thinking.
         </p>
       </footer>
     </main>
