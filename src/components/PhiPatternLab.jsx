@@ -8,6 +8,30 @@ const shellRidgePath = `M260 180
   C146 180, 189 80, 302 74
   C465 66, 526 244, 390 322`;
 
+const goldenAngle = Math.PI * (3 - Math.sqrt(5));
+const sunflowerSeeds = Array.from({ length: 420 }).map((_, index) => {
+  const seedNumber = index + 1;
+  const angle = seedNumber * goldenAngle;
+  const radius = 5.86 * Math.sqrt(seedNumber);
+  const x = 260 + Math.cos(angle) * radius;
+  const y = 180 + Math.sin(angle) * radius;
+  const outerBias = index / 419;
+  const seedSize = 1.35 + outerBias * 0.86;
+
+  return {
+    fill:
+      index % 4 === 0
+        ? "rgba(255, 218, 120, 0.96)"
+        : index % 3 === 0
+          ? "rgba(255, 163, 66, 0.9)"
+          : "rgba(255, 118, 48, 0.84)",
+    opacity: 0.82 + outerBias * 0.14,
+    rx: seedSize,
+    x,
+    y,
+  };
+});
+
 function GalaxyVisual() {
   return (
     <>
@@ -44,29 +68,28 @@ function SunflowerVisual() {
   return (
     <g className="sunflower-system">
       <circle cx="260" cy="180" r="128" fill="url(#sunflowerDisk)" opacity="0.96" />
-      <g className="seed-field">
-        {Array.from({ length: 156 }).map((_, index) => {
-          const angle = index * 2.3999632297;
-          const radius = 4.6 * Math.sqrt(index);
-          const x = 260 + Math.cos(angle) * radius;
-          const y = 180 + Math.sin(angle) * radius;
-          const seedSize = 2.1 + (index % 5) * 0.18;
-          return (
-            <ellipse
-              key={index}
-              className="seed-dot"
-              cx={x}
-              cy={y}
-              rx={seedSize}
-              ry={seedSize * 1.45}
-              fill={index % 3 === 0 ? "rgba(255,208,113,0.88)" : "rgba(255,122,47,0.74)"}
-              transform={`rotate(${(angle * 180) / Math.PI} ${x} ${y})`}
-              opacity={index % 5 === 0 ? "0.92" : "0.76"}
-            />
-          );
-        })}
+      <g className="seed-field" clipPath="url(#sunflowerSeedClip)">
+        {sunflowerSeeds.map((seed, index) => (
+          <circle
+            key={index}
+            className="seed-dot"
+            cx={seed.x}
+            cy={seed.y}
+            r={seed.rx}
+            fill={seed.fill}
+            opacity={seed.opacity}
+          />
+        ))}
       </g>
-      <circle cx="260" cy="180" r="24" fill="rgba(45, 12, 10, .92)" stroke="rgba(255,208,113,.5)" />
+      <circle className="sunflower-cycle-ring" cx="260" cy="180" r="124" fill="none" />
+      <circle
+        className="sunflower-core"
+        cx="260"
+        cy="180"
+        r="24"
+        fill="rgba(45, 12, 10, .92)"
+        stroke="rgba(255,208,113,.5)"
+      />
     </g>
   );
 }
@@ -182,9 +205,12 @@ function PatternVisualStage({ example }) {
           </radialGradient>
           <radialGradient id="sunflowerDisk" cx="50%" cy="50%" r="64%">
             <stop offset="0%" stopColor="rgba(70, 28, 8, .96)" />
-            <stop offset="60%" stopColor="rgba(255, 122, 47, .34)" />
-            <stop offset="100%" stopColor="rgba(255, 208, 113, .08)" />
+            <stop offset="62%" stopColor="rgba(255, 122, 47, .38)" />
+            <stop offset="100%" stopColor="rgba(255, 208, 113, .16)" />
           </radialGradient>
+          <clipPath id="sunflowerSeedClip">
+            <circle cx="260" cy="180" r="125" />
+          </clipPath>
           <radialGradient id="stormField" cx="50%" cy="50%" r="65%">
             <stop offset="0%" stopColor="rgba(255,255,255,.42)" />
             <stop offset="48%" stopColor="rgba(255,61,78,.24)" />

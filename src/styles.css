@@ -1574,13 +1574,23 @@ select option {
 }
 
 .seed-field {
-  animation: sunflowerTurn 34s linear infinite;
   transform-origin: 260px 180px;
+  transform-box: view-box;
+  animation: sunflowerPhyllotaxisCycle 28s linear infinite;
   will-change: transform;
 }
 
-.seed-dot {
-  transform-box: fill-box;
+.sunflower-cycle-ring {
+  stroke: rgba(255, 211, 106, .34);
+  stroke-width: 1.4;
+  stroke-dasharray: 2 18;
+  transform-origin: 260px 180px;
+  transform-box: view-box;
+  animation: sunflowerScanCycle 9s linear infinite;
+}
+
+.sunflower-core {
+  animation: sunflowerCorePulse 5.8s ease-in-out infinite;
 }
 
 .storm-system {
@@ -3851,9 +3861,22 @@ select option {
   }
 }
 
-@keyframes sunflowerTurn {
+@keyframes sunflowerCorePulse {
+  50% {
+    opacity: .7;
+  }
+}
+
+@keyframes sunflowerPhyllotaxisCycle {
+  to {
+    transform: rotate(137.5deg);
+  }
+}
+
+@keyframes sunflowerScanCycle {
   to {
     transform: rotate(360deg);
+    stroke-dashoffset: -120;
   }
 }
 
