@@ -2,7 +2,6 @@ import { useEffect, useRef } from "react";
 
 export default function CosmicCursor() {
   const cursorRef = useRef(null);
-  const trailRef = useRef(null);
   const flareRef = useRef(null);
 
   useEffect(() => {
@@ -14,7 +13,6 @@ export default function CosmicCursor() {
     }
 
     const cursor = cursorRef.current;
-    const trail = trailRef.current;
     const flare = flareRef.current;
     let clickTimer = 0;
     let cursorX = window.innerWidth / 2;
@@ -27,9 +25,6 @@ export default function CosmicCursor() {
       cursorY = y;
       if (cursor) {
         cursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0)`;
-      }
-      if (trail) {
-        trail.style.transform = `translate3d(${cursorX - 30}px, ${cursorY}px, 0) rotate(-18deg)`;
       }
     };
 
@@ -65,7 +60,6 @@ export default function CosmicCursor() {
       <div className="cosmic-cursor" ref={cursorRef} aria-hidden="true">
         <span />
       </div>
-      <div className="cosmic-cursor-trail" ref={trailRef} aria-hidden="true" />
       <div className="cosmic-cursor-flare" ref={flareRef} aria-hidden="true" />
     </>
   );

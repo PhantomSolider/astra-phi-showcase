@@ -81,7 +81,7 @@ function usePerformanceManagement() {
           entry.target.classList.toggle("is-in-view", entry.isIntersecting);
         });
       },
-      { rootMargin: "420px 0px 420px 0px", threshold: 0 }
+      { rootMargin: "1200px 0px 1200px 0px", threshold: 0 }
     );
 
     sections.forEach((section) => observer.observe(section));
