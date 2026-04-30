@@ -15,16 +15,34 @@ export default function CosmicCursor() {
     const cursor = cursorRef.current;
     const flare = flareRef.current;
     let clickTimer = 0;
+    let frame = 0;
     let cursorX = window.innerWidth / 2;
     let cursorY = window.innerHeight / 2;
 
     document.body.classList.add("cosmic-cursor-enabled");
 
-    const setCursorPosition = (x, y) => {
-      cursorX = x;
-      cursorY = y;
+    const applyCursorPosition = () => {
+      frame = 0;
       if (cursor) {
         cursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0)`;
+      }
+    };
+
+    const setCursorPosition = (x, y, immediate = false) => {
+      cursorX = x;
+      cursorY = y;
+
+      if (immediate) {
+        if (frame) {
+          window.cancelAnimationFrame(frame);
+          frame = 0;
+        }
+        applyCursorPosition();
+        return;
+      }
+
+      if (!frame) {
+        frame = window.requestAnimationFrame(applyCursorPosition);
       }
     };
 
@@ -33,7 +51,7 @@ export default function CosmicCursor() {
     };
 
     const handlePointerDown = (event) => {
-      setCursorPosition(event.clientX, event.clientY);
+      setCursorPosition(event.clientX, event.clientY, true);
       flare?.style.setProperty("--flare-x", `${cursorX}px`);
       flare?.style.setProperty("--flare-y", `${cursorY}px`);
       flare?.classList.remove("is-active");
@@ -51,6 +69,9 @@ export default function CosmicCursor() {
       document.body.classList.remove("cosmic-cursor-enabled");
       window.removeEventListener("pointermove", handlePointerMove);
       window.removeEventListener("pointerdown", handlePointerDown);
+      if (frame) {
+        window.cancelAnimationFrame(frame);
+      }
       window.clearTimeout(clickTimer);
     };
   }, []);

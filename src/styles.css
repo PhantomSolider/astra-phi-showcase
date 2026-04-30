@@ -131,6 +131,7 @@ select:focus-visible {
   top: 0;
   z-index: 1000;
   opacity: 0;
+  contain: layout style paint;
   will-change: transform, opacity;
 }
 
